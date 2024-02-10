@@ -1,61 +1,61 @@
 "use server";
 
-export async function getUsers() {
-  const res = await fetch("http://localhost:3009/users");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
-export async function getAccounts() {
-  const res = await fetch("http://localhost:3009/account");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
-export async function getReservations() {
-  const res = await fetch("http://localhost:3009/reservation");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
-export async function getAssets() {
-  const res = await fetch("http://localhost:3009/asset");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
-export async function getReviews() {
-  const res = await fetch("http://localhost:3009/review");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
-export async function getAddons() {
-  const res = await fetch("http://localhost:3009/addon");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
-export async function getLocations() {
-  const res = await fetch("http://localhost:3009/location");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
-export async function getPricing() {
-  const res = await fetch("http://localhost:3009/pricing");
-  if (!res.ok) {
-    throw new Error("Error Fetching Data");
-  }
-  return res.json();
-}
+// export async function getUsers() {
+//   const res = await fetch("http://localhost:3009/users");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
+// export async function getAccounts() {
+//   const res = await fetch("http://localhost:3009/account");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
+// export async function getReservations() {
+//   const res = await fetch("http://localhost:3009/reservation");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
+// export async function getAssets() {
+//   const res = await fetch("http://localhost:3009/asset");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
+// export async function getReviews() {
+//   const res = await fetch("http://localhost:3009/review");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
+// export async function getAddons() {
+//   const res = await fetch("http://localhost:3009/addon");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
+// export async function getLocations() {
+//   const res = await fetch("http://localhost:3009/location");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
+// export async function getPricing() {
+//   const res = await fetch("http://localhost:3009/pricing");
+//   if (!res.ok) {
+//     throw new Error("Error Fetching Data");
+//   }
+//   return res.json();
+// }
 
 //Connect to smartWaiver's API
 const apiBaseUrl = "https://api.smartwaiver.com/v4";

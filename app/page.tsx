@@ -1,4 +1,4 @@
-import { getUsers, getWaivers } from "@/data/page";
+import { getWaivers } from "@/data/page";
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
 import { SmartWaiverDrawer } from "../components/smartWaiver/Drawer";
 
 export default async function Home() {
-  const usersData = await getUsers();
+  // const usersData = await getUsers();
   const { data: waiversData } = await getWaivers("waivers", 10);
   const waivers = waiversData.waivers as Waiver[];
   // make the main tag responsive

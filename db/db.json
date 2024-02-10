@@ -1,0 +1,168 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "emailVerified": true,
+      "image": "https://placehold.co/600x400"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "emailVerified": true,
+      "image": "https://placehold.co/600x400"
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "email": "bobjohnson@example.com",
+      "emailVerified": true,
+      "image": "https://placehold.co/600x400"
+    }
+  ],
+  "account": [
+    { "id": 1, "userId": 1, "type": "user", "provider": "google" },
+    { "id": 2, "userId": 2, "type": "user", "provider": "email" },
+    { "id": 3, "userId": 3, "type": "user", "provider": "google" }
+  ],
+  "reservation": [
+    {
+      "id": 1,
+      "userId": 1,
+      "AssetId": 1,
+      "bookDate": "2021-01-01",
+      "desiredDate": "2021-01-02",
+      "duration": "half",
+      "quote": false,
+      "waiverSigned": true,
+      "groupPicsLocation": "someUrlWhereItIsStored",
+      "addonId": null,
+      "locationId": 3
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "AssetId": 2,
+      "bookDate": "2021-01-01",
+      "desiredDate": "2021-01-02",
+      "duration": "full",
+      "quote": true,
+      "waiverSigned": false,
+      "groupPicsLocation": "someUrlWhereItIsStored",
+      "addonId": 2,
+      "locationId": 1
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "AssetId": 3,
+      "bookDate": "2021-01-01",
+      "desiredDate": "2021-01-02",
+      "duration": "double",
+      "quote": false,
+      "waiverSigned": true,
+      "groupPicsLocation": "someUrlWhereItIsStored",
+      "addonId": 3,
+      "locationId": 2
+    }
+  ],
+  "asset": [
+    {
+      "id": 1,
+      "name": "Asset 1",
+      "description": "Asset 1 description",
+      "image": "https://placehold.co/600x400",
+      "type": "automobile"
+    },
+    {
+      "id": 2,
+      "name": "Asset 2",
+      "description": "Asset 2 description",
+      "image": "https://placehold.co/600x400",
+      "type": "parts"
+    },
+    {
+      "id": 3,
+      "name": "Asset 3",
+      "description": "Asset 3 description",
+      "image": "https://placehold.co/600x400",
+      "type": "apparel"
+    }
+  ],
+  "review": [
+    {
+      "id": 1,
+      "userId": 1,
+      "AssetId": 1,
+      "rating": 5,
+      "comment": "Great asset"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "AssetId": 2,
+      "rating": 4,
+      "comment": "Good asset"
+    },
+    { "id": 3, "userId": 3, "AssetId": 3, "rating": 3, "comment": "Ok asset" }
+  ],
+  "addon": [
+    {
+      "id": 1,
+      "name": "addon 1",
+      "description": "addon 1 description",
+      "locationId": 1
+    },
+    {
+      "id": 2,
+      "name": "addon 2",
+      "description": "addon 2 description",
+      "locationId": 2
+    },
+    {
+      "id": 3,
+      "name": "addon 3",
+      "description": "addon 3 description",
+      "locationId": 3
+    }
+  ],
+  "location": [
+    {
+      "id": 1,
+      "name": "location 1",
+      "description": "location 1 description",
+      "address": "123 main st",
+      "city": "some city",
+      "state": "some state",
+      "zip": "12345",
+      "phone": "123-456-7890"
+    },
+    {
+      "id": 2,
+      "name": "location 2",
+      "description": "location 2 description",
+      "address": "123 main st",
+      "city": "some city",
+      "state": "some state",
+      "zip": "12345",
+      "phone": "123-456-7890"
+    },
+    {
+      "id": 3,
+      "name": "location 3",
+      "description": "location 3 description",
+      "address": "123 main st",
+      "city": "some city",
+      "state": "some state",
+      "zip": "12345",
+      "phone": "123-456-7890"
+    }
+  ],
+  "pricing": [
+    { "id": 1, "AssetId": 1, "locationId": 1, "price": 100 },
+    { "id": 2, "AssetId": 2, "locationId": 2, "price": 200 },
+    { "id": 3, "AssetId": 3, "locationId": 3, "price": 300 }
+  ]
+}

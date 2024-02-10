@@ -29,7 +29,7 @@ export function SmartWaiverDrawer({ id }: { id: string }) {
       </DrawerTrigger>
 
       <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
+        <div className="mx-auto  sm:max-w-sm lg:max-w-full">
           <DrawerHeader>
             <DrawerTitle>
               {waiver?.firstName} {waiver?.lastName}
@@ -39,99 +39,109 @@ export function SmartWaiverDrawer({ id }: { id: string }) {
             </DrawerDescription>
           </DrawerHeader>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <div className="col-span-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  ">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Waiver ID:</span>
-              <span className="text-sm">{waiver?.waiverId}</span>
+              <span className="text-sm truncate">{waiver?.waiverId}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Template ID:</span>
-              <span className="text-sm">{waiver?.templateId}</span>
+              <span className="text-sm truncate">{waiver?.templateId}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Title:</span>
-              <span className="text-sm">{waiver?.title}</span>
+              <span className="text-sm truncate">{waiver?.title}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Created On:</span>
-              <span className="text-sm">{waiver?.createdOn}</span>
+              <span className="text-sm truncate">{waiver?.createdOn}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Expired:</span>
-              <span className="text-sm">{waiver?.expired ? "✅" : "❌"}</span>
+              <span className="text-sm truncate">
+                {waiver?.expired ? "✅" : "❌"}
+              </span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Verified:</span>
-              <span className="text-sm">{waiver?.verified ? "✅" : "❌"}</span>
+              <span className="text-sm truncate">
+                {waiver?.verified ? "✅" : "❌"}
+              </span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Kiosk:</span>
-              <span className="text-sm">{waiver?.kiosk ? "✅" : "❌"}</span>
+              <span className="text-sm truncate">
+                {waiver?.kiosk ? "✅" : "❌"}
+              </span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">First Name:</span>
-              <span className="text-sm">{waiver?.firstName}</span>
+              <span className="text-sm truncate">{waiver?.firstName}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Middle Name:</span>
-              <span className="text-sm">{waiver?.middleName}</span>
+              <span className="text-sm truncate">{waiver?.middleName}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Last Name:</span>
-              <span className="text-sm">{waiver?.lastName}</span>
+              <span className="text-sm truncate">{waiver?.lastName}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Date of Birth:</span>
-              <span className="text-sm">{waiver?.dob}</span>
+              <span className="text-sm truncate">{waiver?.dob}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Is Minor:</span>
-              <span className="text-sm">{waiver?.isMinor ? "✅" : "❌"}</span>
+              <span className="text-sm truncate">
+                {waiver?.isMinor ? "✅" : "❌"}
+              </span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Auto Tag:</span>
-              <span className="text-sm">{waiver?.autoTag}</span>
+              <span className="text-sm truncate">{waiver?.autoTag}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Tags:</span>
-              <span className="text-sm">{waiver?.tags?.join(", ")}</span>
+              <span className="text-sm truncate">
+                {waiver?.tags?.join(", ")}
+              </span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Email:</span>
-              <span className="text-sm">{waiver?.email}</span>
+              <span className="text-sm truncate">{waiver?.email}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Marketing Allowed:</span>
-              <span className="text-sm">
+              <span className="text-sm truncate">
                 {waiver?.marketingAllowed ? "✅" : "❌"}
               </span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">
                 Marketing Allowed Checkbox:
               </span>
-              <span className="text-sm">
+              <span className="text-sm truncate">
                 {waiver?.marketingAllowedCheckbox ? "✅" : "❌"}
               </span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Client IP:</span>
-              <span className="text-sm">{waiver?.clientIP}</span>
+              <span className="text-sm truncate">{waiver?.clientIP}</span>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-1 mx-4 mb-4">
               <span className="text-sm font-medium">Typed Signatures:</span>
-              <span className="text-sm">
+              <span className="text-sm truncate">
                 Participants:{" "}
                 {waiver?.typedSignatures?.participants?.join(", ")}
               </span>
-              <span className="text-sm">
+              <span className="text-sm truncate">
                 Guardian: {waiver?.typedSignatures?.guardian?.join(", ")}
               </span>
-              <span className="text-sm">
+              <span className="text-sm truncate">
                 Body Signatures:{" "}
                 {waiver?.typedSignatures?.bodySignatures?.join(", ")}
               </span>
-              <span className="text-sm">
+              <span className="text-sm truncate">
                 Body Initials:{" "}
                 {waiver?.typedSignatures?.bodyInitials?.join(", ")}
               </span>

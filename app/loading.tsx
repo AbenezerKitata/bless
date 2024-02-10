@@ -1,8 +1,5 @@
-import React from "react";
-import DialogBoxSkeleton from "../components/smartWaiver/dialogBoxSkeleton";
-
 const loading = () => {
-  return <DialogBoxSkeleton />;
+  return "loading...";
 };
 
 export default loading;

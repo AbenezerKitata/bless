@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { SmartWaiverDialog } from "../components/smartWaiver/dialogBox";
+import { SmartWaiverDrawer } from "../components/smartWaiver/Drawer";
 
 export default async function Home() {
   const usersData = await getUsers();
@@ -56,7 +56,7 @@ export default async function Home() {
                 <TableCell>{waiver.isMinor ? "✔️" : "❎"}</TableCell>
                 <TableCell>{waiver.autoTag}</TableCell>
                 <TableCell>
-                  <SmartWaiverDialog id={waiver.waiverId} />
+                  <SmartWaiverDrawer id={waiver.waiverId} />
                 </TableCell>
               </TableRow>
             ))}

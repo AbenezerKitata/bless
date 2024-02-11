@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { ModeToggle } from "@/components/mode-toggle";
+import { auth, signIn, signOut, unstable_update as update } from "auth";
+import { Header } from "@/components/header";
+import { AuthError } from "next-auth";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,6 +25,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <AppHeader />
           <div className="w-full flex justify-end pr-10 pt-10 pb-5">
             <ModeToggle />
           </div>
@@ -29,5 +33,42 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+  );
+}
+
+export async function AppHeader() {
+  const session = await auth();
+  return (
+    <Header
+      session={session}
+      signIn={
+        <form
+          action={async (formData) => {
+            "use server";
+            try {
+              await signIn("google", formData);
+            } catch (error) {
+              if (error instanceof AuthError) {
+                console.log(error);
+              }
+              throw error;
+            }
+          }}
+        >
+          <input name="password" />
+          <button>Sign in</button>
+        </form>
+      }
+      signOut={
+        <form
+          action={async () => {
+            "use server";
+            await signOut();
+          }}
+        >
+          <button>Sign out</button>
+        </form>
+      }
+    />
   );
 }

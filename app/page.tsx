@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { SmartWaiverDrawer } from "../components/smartWaiver/Drawer";
+import { SmartWaiverDrawer } from "../components/smartWaiver/Drawer/page";
 
 export default async function Home() {
   // const usersData = await getUsers();

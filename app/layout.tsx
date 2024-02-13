@@ -6,6 +6,7 @@ import { auth, signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import SignOut from "@/components/auth/signOut";
 
 export const metadata: Metadata = {
   title: {
@@ -32,7 +33,10 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <div className="w-full flex justify-end pr-10 pt-10 pb-5">
-            <ModeToggle />
+            <div className="w-[20%] flex justify-between">
+              {session?.user && <SignOut />}
+              <ModeToggle />
+            </div>
           </div>
           {children}
         </ThemeProvider>

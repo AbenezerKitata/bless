@@ -5,21 +5,24 @@
       "name": "John Doe",
       "email": "johndoe@example.com",
       "emailVerified": true,
-      "image": "https://placehold.co/600x400"
+      "image": "https://placehold.co/600x400",
+      "waiverIds": [1, 2]
     },
     {
       "id": 2,
       "name": "Jane Smith",
       "email": "janesmith@example.com",
       "emailVerified": true,
-      "image": "https://placehold.co/600x400"
+      "image": "https://placehold.co/600x400",
+      "waiverIds": [1, 2]
     },
     {
       "id": 3,
       "name": "Bob Johnson",
       "email": "bobjohnson@example.com",
       "emailVerified": true,
-      "image": "https://placehold.co/600x400"
+      "image": "https://placehold.co/600x400",
+      "waiverIds": [1, 2]
     }
   ],
   "account": [
@@ -30,7 +33,7 @@
   "reservation": [
     {
       "id": 1,
-      "userId": 1,
+      "userIds": 1,
       "AssetId": 1,
       "bookDate": "2021-01-01",
       "desiredDate": "2021-01-02",

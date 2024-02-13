@@ -1,9 +1,10 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-
 import { prisma } from "@/lib/db";
 import { ZodEnum } from "zod";
 import Google from "next-auth/providers/google";
+import Email, { NodemailerConfig } from "next-auth/providers/nodemailer";
+import { sendVerificationRequest } from "@/emails/sendVerificationRequest";
 
 declare module "next-auth" {
   interface User {
@@ -19,17 +20,17 @@ export const {
   signOut,
 } = NextAuth({
   events: {
-    async signIn(message) {
-      console.log("Sign In", message);
+    async signIn() {
+      // console.log("Sign In", message);
     },
-    async signOut(message) {
-      console.log("Sign Out", message);
+    async signOut() {
+      // console.log("Sign Out", message);
     },
     async createUser(message) {
       console.log("Create User", message);
     },
-    async updateUser(message) {
-      console.log("Update User", message);
+    async updateUser() {
+      // console.log("Update User", message);
     },
     async linkAccount({ user }) {
       await prisma.user.update({
@@ -39,15 +40,15 @@ export const {
         },
       });
     },
-    async session(message) {
-      console.log("Session", message);
+    async session() {
+      // console.log("Session", message);
     },
   },
   pages: {
     signIn: "/api/auth/signin",
   },
   callbacks: {
-    async authorized({ request, auth }) {
+    async authorized({ auth }) {
       if (!auth?.user) {
         console.log("not authorized!");
         return false;
@@ -55,15 +56,26 @@ export const {
 
       return true;
     },
-    async session({ token, session }) {
-      console.log("Session Token", token);
+    async session({ session }) {
+      // console.log("Session Token", token);
 
       return session;
     },
-    async jwt({ token, user }) {
-      console.log("JWT Token", token);
+    async jwt({ token, user, trigger, session }) {
+      // console.log("JWT Token", token);
       if (user) token.role = user.role;
+
+      if (trigger === "update" && session?.name) {
+        token.name = session.name;
+      }
+
       return token;
+    },
+
+    async signIn({ account }) {
+      // Allow OAuth without email verification
+      if (account?.provider === "google") return true;
+      return false;
     },
   },
   adapter: PrismaAdapter(prisma),
@@ -89,22 +101,21 @@ export const {
           email: profile.email,
         };
       },
-      clientId: process.env.GOOGLE_ID!,
-      clientSecret: process.env.GOOGLE_SECRET!,
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    // EmailProvider({
-    //   id: "email",
-    //   name: "email",
-    //   server: {
-    //     host: process.env.EMAIL_SERVER_HOST,
-    //     port: process.env.EMAIL_SERVER_PORT,
-    //     auth: {
-    //       user: process.env.EMAIL_SERVER_USER,
-    //       pass: process.env.EMAIL_SERVER_PASSWORD,
-    //     },
-    //   },
-    //   from: process.env.EMAIL_FROM,
-    // }),
+    Email({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: Number(process.env.EMAIL_SERVER_PORT),
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
+      sendVerificationRequest,
+    }) as NodemailerConfig & { options: Record<string, unknown> },
 
     // Resend({
     //   apiKey: process.env.EMAIL_SERVER_PASSWORD,

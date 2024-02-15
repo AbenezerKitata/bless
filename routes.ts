@@ -3,7 +3,7 @@
  * These routes do not require authentication
  * @type {string[]}
  */
-export const signIn = "/api/auth/signin";
+export const signIn = "/api/auth/signIn";
 // export const publicRoute = "/";
 
 export const DEFAULT_LOGIN_REDIRECT = "/";

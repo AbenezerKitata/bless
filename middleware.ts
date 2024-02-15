@@ -1,27 +1,15 @@
-import { auth } from "./auth";
-import { DEFAULT_LOGIN_REDIRECT, signIn } from "@/routes";
+import { authMiddleware } from "@clerk/nextjs";
 
-/**
- * Middleware function that handles authentication.
- *
- * @param req - The request object.
- * @returns A redirect response based on the authentication status and the requested URL.
- */
-export default auth((req) => {
-  // req.auth
-  const { nextUrl } = req;
-  const isLoggedIn = !!req.auth;
-  const isSignInRoute = signIn === nextUrl.pathname;
-  console.log(nextUrl.pathname);
-
-  if (isLoggedIn && isSignInRoute) {
-    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-  }
-  if (!isLoggedIn && !isSignInRoute) {
-    return Response.redirect(new URL(signIn, nextUrl));
-  }
+// This example protects all routes including api/trpc routes
+// Please edit this to allow other routes to be public as needed.
+// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
+export default authMiddleware({
+  publicRoutes: ["/api/webhooks/clerk(.*)", "/"],
 });
-// Read more: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
+// export default function middleware() {
+//   return null;
+// }
+
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };

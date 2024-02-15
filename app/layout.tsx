@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { ModeToggle } from "@/components/mode-toggle";
-import { auth, signOut } from "@/auth";
+import { ClerkProvider, UserButton, auth } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+import { LuMenuSquare } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
-import SignOut from "@/components/auth/signOut";
+import MenuButton from "@/components/menu-button";
 
+// import {
+//   RegisterLink,
+//   LoginLink,
+// } from "@kinde-oss/kinde-auth-nextjs/components";
 export const metadata: Metadata = {
   title: {
     template: "Abenezer's Playground",
@@ -22,25 +26,44 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
+  const session = auth();
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="w-full flex justify-end pr-10 pt-10 pb-5">
-            <div className="w-[20%] flex justify-between">
-              {session?.user && <SignOut />}
-              <ModeToggle />
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
+      <html lang="en" suppressHydrationWarning>
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="px-5 flex items-center sticky top-0">
+              <MenuButton />
+
+              <div
+                className="w-full flex justify-end items-center gap-4  py-3 z-0 sticky top-0 bg-transparent"
+                style={{ opacity: 0.8 }}
+              >
+                <ModeToggle />
+                {session.userId && <UserButton />}
+              </div>
             </div>
-          </div>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+            <div className="z-10">{children}</div>
+            {/* <div className="w-full flex justify-between"> */}
+            {/* Kinde auth provider */}
+            {/* <LoginLink>Sign in</LoginLink>
+
+              <RegisterLink>Sign up</RegisterLink> */}
+            {/* </div> */}
+            {/* </div> */}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

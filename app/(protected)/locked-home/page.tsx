@@ -1,8 +1,8 @@
 import { auth } from "@clerk/nextjs";
 import { UserButton } from "@clerk/nextjs";
 import React from "react";
-import ProtectedHeader from "./components/header";
-import DatePickerForm from "./components/form";
+import ProtectedHeader from "../components/header";
+import DatePickerForm from "../components/form";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 // import { NavigationMenuDemo } from "@/components/nav-menu";
@@ -25,20 +25,6 @@ const ProtectedHomePage = () => {
           </div>
         </div>
       )}
-    </div>
-  );
-};
-
-export const Protected = ({ children }: { children: React.ReactNode }) => {
-  const session = auth();
-  return (
-    <div>
-      {session.userId && (
-        <div className="flex justify-end p-4">
-          <UserButton />
-        </div>
-      )}
-      {session.userId && <div>{children}</div>}
     </div>
   );
 };

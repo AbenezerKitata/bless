@@ -6,6 +6,7 @@ import { ClerkProvider, UserButton, auth } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import MenuButton from "@/components/menu-button";
 import ShowWindowSize from "@/components/show-window-size";
+import { Toaster } from "@/components/ui/toaster";
 
 // import {
 //   RegisterLink,
@@ -60,7 +61,8 @@ export default async function RootLayout({
         <RegisterLink>Sign up</RegisterLink> */}
             {/* </div> */}
             {/* </div> */}
-            {process.env.NODE_ENV === "development" && <ShowWindowSize />}
+            {/* {process.env.NODE_ENV === "development" && <ShowWindowSize />} */}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

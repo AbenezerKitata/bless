@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs";
-import ProtectedHomePage from "./(protected)/home/page";
+import ProtectedHomePage from "./(protected)/locked-home/page";
 import UnprotectedHomePage from "./(unprotected)/home/page";
 
 export default async function Home() {

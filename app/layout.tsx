@@ -4,9 +4,8 @@ import "./globals.css";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ClerkProvider, UserButton, auth } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
-import { LuMenuSquare } from "react-icons/lu";
-import { Button } from "@/components/ui/button";
 import MenuButton from "@/components/menu-button";
+import ShowWindowSize from "@/components/show-window-size";
 
 // import {
 //   RegisterLink,
@@ -38,7 +37,7 @@ export default async function RootLayout({
         <body>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            // defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
@@ -57,10 +56,11 @@ export default async function RootLayout({
             {/* <div className="w-full flex justify-between"> */}
             {/* Kinde auth provider */}
             {/* <LoginLink>Sign in</LoginLink>
-
-              <RegisterLink>Sign up</RegisterLink> */}
+          
+        <RegisterLink>Sign up</RegisterLink> */}
             {/* </div> */}
             {/* </div> */}
+            {process.env.NODE_ENV === "development" && <ShowWindowSize />}
           </ThemeProvider>
         </body>
       </html>

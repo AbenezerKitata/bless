@@ -13,14 +13,7 @@ const ProtectedHeader = () => {
           return prevSize;
         } else {
           // Decrease the size by one step
-          const sizes = [
-            "text-6xl",
-            "text-5xl",
-
-            // "text-2xl",
-            // "text-xl",
-            // "text-lg",
-          ];
+          const sizes = ["text-6xl", "text-5xl"];
           const currentIndex = sizes.indexOf(prevSize);
           return sizes[currentIndex + 1];
         }

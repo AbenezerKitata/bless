@@ -1,24 +1,41 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons"
-import { DayPicker } from "react-day-picker"
+import * as React from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import { DayPicker } from "react-day-picker";
+import dayjs from "dayjs";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function Calendar({
   className,
   classNames,
-  showOutsideDays = true,
+  // showOutsideDays = true,
   ...props
 }: CalendarProps) {
+  function generatePastDates(numDays: number) {
+    const pastDates = [];
+    for (let i = 0; i < numDays; i++) {
+      const date = dayjs().subtract(i, "day").toDate();
+      pastDates.push(date);
+    }
+    return pastDates;
+  }
+  const pastDates = generatePastDates(31); // Generate past dates for the past 31 days
+  const [selected, setSelected] = React.useState<Date | undefined>(undefined);
+
+  const handleDayClick = (date: Date) => {
+    setSelected(date);
+  };
+
   return (
     <DayPicker
-      showOutsideDays={showOutsideDays}
+      // showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
+      disabled={pastDates}
+      onDayClick={handleDayClick}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
@@ -50,7 +67,8 @@ function Calendar({
         day_range_end: "day-range-end",
         day_selected:
           "bg-zinc-900 text-zinc-50 hover:bg-zinc-900 hover:text-zinc-50 focus:bg-zinc-900 focus:text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-50 dark:hover:text-zinc-900 dark:focus:bg-zinc-50 dark:focus:text-zinc-900",
-        day_today: "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50",
+        day_today:
+          "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50",
         day_outside:
           "day-outside text-zinc-500 opacity-50  aria-selected:bg-zinc-100/50 aria-selected:text-zinc-500 aria-selected:opacity-30 dark:text-zinc-400 dark:aria-selected:bg-zinc-800/50 dark:aria-selected:text-zinc-400",
         day_disabled: "text-zinc-500 opacity-50 dark:text-zinc-400",
@@ -65,8 +83,8 @@ function Calendar({
       }}
       {...props}
     />
-  )
+  );
 }
-Calendar.displayName = "Calendar"
+Calendar.displayName = "Calendar";
 
-export { Calendar }
+export { Calendar };

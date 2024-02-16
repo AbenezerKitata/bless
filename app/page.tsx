@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
-import ProtectedHomePage from "./(protected)/locked-home/page";
-import UnprotectedHomePage from "./(unprotected)/home/page";
+import ProtectedHomePage from "./(protected)/pro-home/page";
+import UnprotectedHomePage from "./(unprotected)/un-home/page";
 
 export default async function Home() {
   const session = auth();
